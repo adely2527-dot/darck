@@ -19,6 +19,7 @@ jobs:
           rm -rf android
           flutter create . --platforms=android --overwrite
           cp /tmp/m.dart lib/main.dart
+          echo '{"project_info":{"project_number":"123","project_id":"dummy"},"client":[{"client_info":{"mobilesdk_app_id":"1:123:android:abc","android_client_info":{"package_name":"com.example.darck"}},"oauth_client":[],"api_key":[{"current_key":"dummy"}],"services":{"appinvite_service":{"other_platform_oauth_client":[]}}}],"configuration_version":"1"}' > android/app/google-services.json
       - name: Get packages
         run: flutter pub get
       - name: Build APK
