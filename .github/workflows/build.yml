@@ -16,12 +16,12 @@ jobs:
       - name: Fix project
         run: |
           cp lib/main.dart /tmp/m.dart
-          flutter create . --platforms=android --overwrite
+          flutter create. --platforms=android --overwrite
           cp /tmp/m.dart lib/main.dart
       - name: Get packages
         run: flutter pub get
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
