@@ -1,5 +1,5 @@
 name: darck
-description: Darck Chat App
+description: Darck v4.8.1 FULL
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -9,16 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  cloud_firestore: ^4.15.5
-  google_sign_in: ^6.2.1
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.12.0
+  cloud_firestore: ^4.15.0
+  google_sign_in: ^6.1.6
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.4
+  crypto: ^3.0.3
+  record: ^5.0.4
+  permission_handler: ^11.1.0
+  audioplayers: ^5.2.1
 
 flutter:
   uses-material-design: true
