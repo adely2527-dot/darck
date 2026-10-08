@@ -1,24 +1,24 @@
 name: darck
-description: Darck v4.8.1 FULL
+description: Darck Universal - All Devices All Versions
 publish_to: 'none'
-version: 1.0.0+1
+version: 4.8.1+48
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   firebase_core: ^2.24.0
-  firebase_auth: ^4.12.0
+  firebase_auth: ^4.15.0
   cloud_firestore: ^4.15.0
-  google_sign_in: ^6.1.6
-  shared_preferences: ^2.2.2
-  image_picker: ^1.0.4
+  google_sign_in: ^6.1.0
   crypto: ^3.0.3
-  record: ^5.0.4
-  permission_handler: ^11.1.0
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.7
+  record: ^6.1.1
   audioplayers: ^5.2.1
+  permission_handler: ^11.0.1
 
 flutter:
   uses-material-design: true
