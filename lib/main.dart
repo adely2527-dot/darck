@@ -200,10 +200,13 @@ class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
+
 class _ChatScreenState extends State<ChatScreen> {
   final ctrl = TextEditingController();
   final fs = FirebaseFirestore.instance;
-  final rec = AudioRecorder();
+
+  // ====== المتغيرات المتصلحة للحل 1 - Smart 5 ======
+  final Record rec = Record();
   final player = AudioPlayer();
   bool isRec = false;
 
@@ -223,7 +226,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   toggleRecord() async {
     if(isRec){
-      String? path = await rec.stop();
+      // الحل 1: stopRecorder للقديم
+      String? path = await rec.stopRecorder();
       setState(()=> isRec = false);
       if(path!= null){
         await fs.collection('darck_messages').add({
@@ -240,7 +244,8 @@ class _ChatScreenState extends State<ChatScreen> {
     } else {
       if(await Permission.microphone.request().isGranted){
         if(await rec.hasPermission()){
-          await rec.start(const RecordConfig(), path: '/storage/emulated/0/Download/darck_${DateTime.now().millisecondsSinceEpoch}.m4a');
+          // الحل 1: toFile للقديم - شغال على Smart 5
+          await rec.startRecorder(toFile: '/storage/emulated/0/Download/darck_${DateTime.now().millisecondsSinceEpoch}.m4a');
           setState(()=> isRec = true);
         }
       }
@@ -250,7 +255,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("الشات - Server + Voice ON", style: TextStyle(color: Color(0xFF00FF41), fontSize: 14)), backgroundColor: Colors.black),
+      appBar: AppBar(title: Text("الشات - Server + Voice ON (Smart 5 Fix)", style: TextStyle(color: Color(0xFF00FF41), fontSize: 14)), backgroundColor: Colors.black),
       backgroundColor: Colors.black,
       body: Column(children: [
         Expanded(child: StreamBuilder<QuerySnapshot>(
@@ -297,7 +302,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('custom_bg', p.path);
       widget.onChanged();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تم حفظ ثيمك الخاص ✅ خلفية جديدة")));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تم حفظ ثيمك الخاص ✅")));
     }
   }
   @override
