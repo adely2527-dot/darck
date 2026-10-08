@@ -16,6 +16,7 @@ jobs:
       - name: Fix project
         run: |
           cp lib/main.dart /tmp/m.dart
+          rm -rf android
           flutter create . --platforms=android --overwrite
           cp /tmp/m.dart lib/main.dart
       - name: Get packages
