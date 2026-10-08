@@ -13,34 +13,12 @@ jobs:
         with:
           flutter-version: '3.22.0'
           channel: 'stable'
-      - name: Create Flutter project files
+      - name: Fix project
         run: |
-          flutter create --platforms=android --project-name darck.
-          rm -f lib/main.dart
-          mv pubspec.yaml pubspec.yaml.bak || true
-          cat > pubspec.yaml << 'EOF'
-          name: darck
-          description: Darck Universal App
-          publish_to: 'none'
-          version: 4.8.1+1
-          environment:
-            sdk: '>=3.0.0 <4.0.0'
-          dependencies:
-            flutter:
-              sdk: flutter
-            firebase_core: ^2.24.0
-            firebase_auth: ^4.15.0
-            cloud_firestore: ^4.15.0
-            google_sign_in: ^6.2.1
-            shared_preferences: ^2.2.2
-          flutter:
-            uses-material-design: true
-          EOF
-      - name: Restore main.dart
-        run: |
-          ls -la lib/
-          cat lib/main.dart | head -20
-      - name: Get dependencies
+          cp lib/main.dart /tmp/m.dart
+          flutter create. --platforms=android --overwrite
+          cp /tmp/m.dart lib/main.dart
+      - name: Get packages
         run: flutter pub get
       - name: Build APK
         run: flutter build apk --release
