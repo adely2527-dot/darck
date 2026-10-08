@@ -11,17 +11,16 @@ jobs:
           java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.5'
+          flutter-version: '3.19.6'
           channel: 'stable'
-      - name: Fix Android and Build
+      - name: Build for All Devices
         run: |
           rm -rf android
-          flutter create . --platforms=android --project-name darck
+          flutter create. --platforms=android --project-name darck
           flutter clean
           flutter pub get
-      - name: Build APK
-        run: flutter build apk --release
+          flutter build apk --release --split-per-abi
       - uses: actions/upload-artifact@v4
         with:
-          name: darck-full-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: darck-smart5-apk
+          path: build/app/outputs/flutter-apk/app-*-release.apk
