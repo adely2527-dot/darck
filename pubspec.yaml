@@ -1,21 +1,32 @@
 name: darck
-description: Darck Universal - All Devices All Versions
+description: DARCK v4.8.1 FULL - VOIDWATCH Edition for All Android
 publish_to: 'none'
 version: 4.8.1+48
+
 environment:
   sdk: ">=3.0.0 <4.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.6
   firebase_core: ^2.24.0
   firebase_auth: ^4.15.0
   cloud_firestore: ^4.15.0
-  google_sign_in: ^6.1.0
+  google_sign_in: ^6.1.6
   crypto: ^3.0.3
   shared_preferences: ^2.2.2
   image_picker: ^1.0.7
+  permission_handler: ^11.3.1
+  
+  # الحل 1 - للـ Smart 5 وكل الاندرويد
   record: ^4.4.4
   audioplayers: ^5.2.1
-  permission_handler: ^11.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
 flutter:
   uses-material-design: true
