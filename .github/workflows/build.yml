@@ -16,7 +16,7 @@ jobs:
       - name: Build for All Devices
         run: |
           rm -rf android
-          flutter create. --platforms=android --project-name darck
+          flutter create . --platforms=android --project-name darck
           flutter clean
           flutter pub get
           flutter build apk --release --split-per-abi
